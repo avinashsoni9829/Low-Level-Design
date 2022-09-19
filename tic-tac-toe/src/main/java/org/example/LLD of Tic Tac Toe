@@ -1,0 +1,32 @@
+How to Design a Tic Tac Toe ?
+
+BASIC  :
+ -  Should be a N * N instead of 3 * 3 design
+ -  Either  B / w  Two Players  or Player vs  Computer
+ -  Should Allow use of More Symbol then O and X
+ -  Player Should Get a Rating On basis of Win | Draw
+ -  Leaderboard : -> Friends , Country Wise , Global
+ -  Allow Undo a Change or Not ?
+ -  Timer To Raise a Move
+ -  Track the Moves of the user to Show a short quick demo how the game went
+ -  Toss to Choose the Symbol
+ -  User Details
+    1. Name
+    2. Country
+    3. Gender
+    4. Gaming Name
+    5. Avatar
+
+
+ Advance :
+  -  Adding of AI to Computer  with Different Difficulty ->  EASY , MEDIUM , HARD
+  -  Player Matching Algorithm based on the Rating of the User  | Gender of The User | Country of the User
+  -  Player Can Get Badges as Per his Rating
+  -  Fancy Player Symbols for Paid user or  on Basis of a Coin Reward System
+  -  User can need X amount of Coins to join a Match  Type - 100  coin match , 300 coin match  , 1000 coin Match [ Refer : 8 Ball Pool ]
+  -  Track the Moves of the user to Show a short quick demo how the game went
+  -  Games History
+  -  User Authentication
+
+
+// state -> start -> ongoingh
