@@ -1,0 +1,12 @@
+Basic :
+1.  Game board should not be till 100 -  should be customizable
+2.  it should allow more than 2 players
+3.  snake and ladder loop should not be there
+4.  snakes and ladder can also be randomized ->  small | medium | large | superLarge [  factory pattern ]
+    randomizing criteria :
+         small snake | ladder -> 20% of the size decrease | increase
+         medium  snake | ladder ->  40 % of the size decrease | increase
+         large  snake | ladder -> 60 % of the size decrease | increase
+         superLarge snake | ladder -> 80 % of the size decrease | increase
+5.  size should be a multiple of 10
+6. should allow more things to be added like snake and ladder
