@@ -1,0 +1,4 @@
+1. ATM can be created anywhere we want
+2. Location and Transactions Can be Used to AUDIT the ATM
+3. User Can Withdraw amount but the balance should be greater than required and the ATM should have sufficient funds
+4.

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ATM" />
+        <module name="tic-tac-toe" />
+        <module name="Snake-Ladder" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ATM" target="1.8" />
+      <module name="Snake-Ladder" target="1.8" />
+      <module name="tic-tac-toe" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
