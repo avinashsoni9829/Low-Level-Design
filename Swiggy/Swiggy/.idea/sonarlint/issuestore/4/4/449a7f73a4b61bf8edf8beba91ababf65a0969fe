@@ -1,0 +1,4 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÚÁ«Éıÿÿÿÿ8ß—ÌÄË0
+x	java:S116"WRename this field "x_coordinate" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ÀûÁûÿÿÿÿ8ï—ÌÄË0
+s	java:S116"WRename this field "y_coordinate" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿû™æ8ï—ÌÄË0
