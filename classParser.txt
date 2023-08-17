@@ -1,0 +1,32 @@
+@PostMapping("/test")
+  public String printEntityPaths(@RequestBody String json) throws JsonProcessingException {
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    try {
+      JsonNode jsonNode = objectMapper.readTree(json);
+      return getEntityPaths(jsonNode, "");
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "Error parsing JSON.";
+    }
+  }
+
+  private String getEntityPaths(JsonNode jsonNode, String parentField) {
+    StringBuilder result = new StringBuilder();
+
+    if (jsonNode.isObject()) {
+      jsonNode
+          .fields()
+          .forEachRemaining(
+              entry -> {
+                String currentField =
+                    parentField.isEmpty() ? entry.getKey() : parentField + "." + entry.getKey();
+                result.append(currentField).append("\n");
+                result.append(getEntityPaths(entry.getValue(), currentField));
+              });
+    } else if (jsonNode.isArray() && jsonNode.size() > 0 && jsonNode.get(0).isObject()) {
+      result.append(getEntityPaths(jsonNode.get(0), parentField));
+    }
+
+    return result.toString();
+  }
