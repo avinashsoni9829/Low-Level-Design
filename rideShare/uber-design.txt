@@ -1,0 +1,190 @@
+=============================
+Stage - 1 : Requirements ( ask for things like what features u want )
+============================
+User :
+1. Book a ride
+2. Cancel a ride
+3. Rate a ride
+
+Driver :
+1. Accept a ride
+2. Cancel a ride
+3. Complete a ride
+
+
+
+Stage -2  : Entity Discussion ( from the start of flow of booking )  [ we will only discuss basic entites without functions here]
+ Flow :
+  - enter src , dest [ by rider]
+  - choose option
+  - ride request is sent
+  - driver accept a request
+  - ride in progress
+  - driver complete the ride
+  - rider rate the driver
+
+================================
+Location :
+ int x
+ int y
+=============
+Vehicle Class :
+  vehicleType
+  capacity
+  car no
+  car description
+  car colour
+  car model
+  baseFare
+================
+User --> Driver
+    ---> Rider
+
+User -- abstract class
+------------------------
+id
+phoneNumber
+gender
+Location
+name
+List<Rides>
+rating
+--------------
+Driver ==> extend the User
+vehicle --> association [ Has - A - Relation ]
+================================================
+Rider => extend the user
+isHavingRiderPass
+List<Address> savedAddress ---> for quick ride booking
+List<Payments> paymentOptions --> for payments
+=================================================
+Ride
+========
+id
+Driver
+Rider
+Fare
+Status  --> NOT STARTED , IN PROGRESS , COMPLETED --> other options may be there
+Rating
+Distance
+==============
+Fare
+baseAmount
+discount
+finalPrice
+==============
+Rating
+rating
+List<Comments>
+
+==============
+
+
+Stage - 3  (Class to Function Mapping ( explaining Function Inputs & Output) [ define the functions for each class here i/o)
+=====================
+
+1. Location
+
+    -> int  FindDistance(Location location) --> compute the distance (in KM)
+2. Vehicle  -->  no need of any functions
+
+3. User (abstract class) :
+   -> register
+   -> unregister
+4. Driver
+   -> void acceptRide(RideRequest obj)
+   -> void cancelRide(Ride obj)
+   -> void completeRide(Ride obj)
+5. Rider
+   -> void makeABooking(Location src , Location destination  , VehicleType vehicle):
+   -> void cancelRide(Ride ride)
+   -> void RateARide(Ride ride,Rating rate)
+
+6. Fare
+   -> computeFair(Ride obj) ==> vehicle from driver => baseFare => strategy find fare
+
+7. Rating
+
+==================================
+
+Stage -4 : Function  Implementation (with req / res ) and mind mapping: [ basic logic of the functions like psudeo code ]
+
+    Location => int findDistance(location l )  --> using x2-x1 ^ 2 + y2- y1 ^ 2 (sqrt)
+    Driver
+    ==============
+    1. Accept a Ride
+           RideRequest
+            {
+             from
+             to
+             fare --> his payment after cut
+
+            }
+    2. Cancel a ride :
+     Ride Object
+       -> updated status = cancelled
+       -> notify the user
+    3. Complete a ride
+        -> update the status
+        -> compute the fare
+        -> notify the user
+    =========================
+    Rider
+    1. make a Booking ( Location src , Location Dest , VehicleType) :
+       - based on vehicle type ==> fetch the Riders ( strategy = nearest riders)
+       - create RideRequest Object  --> src , dest
+       - computeFairForDriver() --> handled with some strategy
+       - request the ride
+    2. cancel a ride  (Ride r)
+       - update stauts  => CANCELLED BY USER
+       - notify the driver
+    3. rate a ride  (Rating rating , Ride ride  )
+       - setRating()
+       - update the rider
+    ===============================
+
+ Stage - 5 : Optimizations & Discussions: [ discuss the possible uses of design patterns & further optmiziations )
+ ============================================
+ Design patterns to be used :
+ 1. Factory Design Pattern ( UserFactory --> able to create the Rider , Driver Object on demand)
+ 2. Observer Pattern (to communicate with the driver & rider)
+ 3. Strategy Pattern ( to compute different strategy for fair calculations)
+ 4. SingleTonPattern ( RideManager Class)
+ 5. Builder Pattern  ( Creating ride Object )
+ 6. State Pattern => based on ride current state
+============================= * ==============================================
+
+Stage 6 -> Future Scope &  Tech Design Discussions: ( find future scope , think of concurrency , include side features which were missed )
+
+Future Scope :
+  1. How FanOut of ride Request  work --> ?  ( every nearby , selective nearby upto a limit , ? )
+  2. if there are concurrent requests for  a rider
+
+                            [rider - 1]
+             [driver] ===>  [rider -2 ]
+                            [rider -3 ]
+
+             [queue] <--- [req-1, r2 , r3 ]
+              --> from , to , fare for driver   on his dashboard [ list of all ]
+
+ 3. Dispute Issues
+ 4. offers & promo --> automatic promo applied by uber
+ 5. payment - wallet , card , cash , UPI
+ 6. chat option with rider [ dynamic chat creation]
+
+
+Key - Technologies :   -- [ say about the technology u can think of about this application ]
+1. GRAPHQL -> to fetch realtime data for ride available
+2. Websockets -> for updates in real time
+
+Database Discussion : [ mandatory question in every interview prepare throughly advantages and disadvantages of doing it]
+                      [ how tables would be created to make it more optimal , indexing on what object , seperation of classes , reptitive data to be
+                        avoided , etc etc ]
+Location => NoSQL
+Vehicle => NoSQl
+User [ Rider / Driver ] => NoSQL
+Ride => Fare      --> SQL
+     => Rating
+================================
+
+
