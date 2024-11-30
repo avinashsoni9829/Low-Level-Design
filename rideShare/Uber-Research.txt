@@ -1,0 +1,404 @@
+
+
+1. this is the response when we are looking for a ride in uber 
+-> it has details like: 
+    - city 
+    - nearbyVehicle [ location . longitude / latitude , eta ]
+
+      
+{
+    "data": {
+        "status": {
+            "city": {
+                "countryIso2": "IN",
+                "currencyCode": "INR",
+                "id": 342,
+                "name": "pune",
+                "timezone": "Asia/Kolkata",
+                "__typename": "RVWebCommonCity"
+            },
+            "clientStatus": "Looking",
+            "coordinate": {
+                "latitude": 18.6161,
+                "longitude": 73.7286,
+                "__typename": "RVWebCommonCoordinate"
+            },
+            "nearbyVehicles": [
+                {
+                    "bearing": 160,
+                    "coordinate": {
+                        "latitude": 18.63396,
+                        "longitude": 73.74121,
+                        "__typename": "RVWebCommonCoordinate"
+                    },
+                    "etaInMin": 10,
+                    "etaStringShort": "10 mins",
+                    "id": 1092,
+                    "mapImageUrl": "https://d1a3f4spazzrp4.cloudfront.net/car-types/map70px/map-suv.png",
+                    "__typename": "RVWebCommonVehicle"
+                },
+
+
+                {
+                    "bearing": 268,
+                    "coordinate": {
+                        "latitude": 18.63682,
+                        "longitude": 73.72791,
+                        "__typename": "RVWebCommonCoordinate"
+                    },
+                    "etaInMin": 10,
+                    "etaStringShort": "10 mins",
+                    "id": 20057099,
+                    "mapImageUrl": "https://d1a3f4spazzrp4.cloudfront.net/car-types/map70px/map-uberx.png",
+                    "__typename": "RVWebCommonVehicle"
+                }
+            ],
+            "pollingIntervalMs": 4000,
+            "productsUnavailableMessage": "Unfortunately, Uber is currently unavailable in your area.",
+            "trip": null,
+            "trips": [],
+            "__typename": "RVWebCommonStatus"
+        }
+    }
+}
+
+
+==================== Response ==========
+
+
+
+2. this is the response we get when we request a ride from uber == 
+  -> Product : [ a type of offering from uber] 
+     - description 
+     - details 
+     - primaryDiscount 
+     - displayValue 
+     - Estimated Trip Time 
+     - Fare Detail [ includes all the options we have ] 
+       - capacity 
+       - discount 
+       - fare 
+       - hasPromo 
+       - hasRidePass 
+=============================================       
+
+{
+    "data": {
+        "products": {
+            "defaultVVID": "2011",
+            "hourlyTiersWithMinimumFare": [],
+            "intercity": null,
+            "links": [],
+            "productsUnavailableMessage": "Unfortunately, Uber is currently unavailable in your area.",
+            "tiers": [
+                {
+                    "products": [
+                        {
+                            "badges": [],
+                            "cityID": "215",
+                            "currencyCode": "INR",
+                            "description": "Uber Go",
+                            "detailedDescription": "Affordable compact rides",
+                            "discountPrimary": "20%",
+                            "displayName": "Uber Go",
+                            "estimatedTripTime": 1797,
+                            "etaStringShort": "7 mins",
+                            "fares": [
+                                {
+                                    "capacity": 4,
+                                    "discountPrimary": "20%",
+                                    "fare": "₹178.21",
+                                    "fareAmountE5": 17821000,
+                                    "hasPromo": true,
+                                    "hasRidePass": false,
+                                    "meta": "{\"cityID\":\"215\",\"countryIso2\":\"IN\",\"etd\":{\"meta\":{\"isShownEtd\":null,\"cryptoVersion\":null,\"encryptedEtd\":null,\"lighthouseRequestUuid\":\"9b005bdb-69a8-46c0-aab5-25f040dff59c\"},\"state\":null,\"guaranteedTripTime\":null,\"pickupRequestTime\":null,\"stateShortDescription\":null,\"stateTimeDescription\":null,\"stateDetailedDescription\":null,\"creditsDescription\":null,\"stateDescriptionImageUrl\":null,\"estimatedTripTime\":1797,\"deviceTimeData\":null,\"tripUUID\":null,\"comparisonTripTime\":null,\"legalDisclaimer\":\"Your \\\"latest arrival time\\\" factors in traffic and any additional pickups and drop-offs along your route. It is not a guarantee.\",\"estimateRequestTime\":0,\"stateHeaderDescription\":null,\"etdDisplayString\":\"\",\"estimatedSoloOnTripTime\":1269},\"fareEstimateInfo\":{},\"fareFlowUUID\":\"60124551-799a-48ae-a5b4-10596365e149\",\"fareRequestUUID\":\"f21cf6f9-b467-4c1d-a826-6dd3af780fcf\",\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"fareUUID\":\"\",\"parentProductTypeUUID\":\"6a8e56b8-914e-4b48-a387-e6ad21d9c00c\",\"pricingParams\":{\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"packageVariantUUID\":\"f21cf6f9-b467-4c1d-a826-6dd3af780fcf\",\"requestLocation\":{\"latitude\":18.9220554,\"longitude\":72.8330387}},\"productUuid\":\"6e5f10a5-9aab-5f5e-8365-b582219ea42f\",\"upfrontFare\":{\"capacity\":1,\"currencyCode\":\"INR\",\"destinationLat\":18.9690247,\"destinationLng\":72.8205292,\"fare\":\"178.21\",\"originLat\":18.9220554,\"originLng\":72.8330387,\"signature\":{\"expiresAt\":1732987021,\"issuedAt\":1732986781,\"signature\":\"{\\\"packageVariantUUID\\\":\\\"f21cf6f9-b467-4c1d-a826-6dd3af780fcf\\\",\\\"fareSessionUUID\\\":\\\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\\\",\\\"fareFlowUUID\\\":\\\"60124551-799a-48ae-a5b4-10596365e149\\\"}\",\"version\":\"pricing_params_v1\"},\"vehicleViewId\":2011,\"estimationMethod\":null,\"knnDistance\":null,\"discountedFare\":null,\"ruleNames\":null,\"uuid\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"source\":null,\"ezpzFareBreakdown\":null,\"unmatchedKnnFare\":null,\"estimatedDuration\":null,\"dynamicFareInfo\":{\"isSobriety\":false,\"multiplier\":1,\"surgeSuppressionThreshold\":0,\"uuid\":\"d6ba8de3-4289-4d26-aa0f-407dabe67747\"},\"surgeMultiplier\":1,\"matchedKnnFare\":null,\"originalFare\":null,\"knnDuration\":null,\"ezpzFareEstimate\":null,\"originalFarePrePromo\":null,\"estimatedDistance\":null,\"knnFare\":null,\"ufpType\":null,\"typeSpecificData\":null,\"viaLocations\":[],\"unmodifiedDistance\":6410,\"alternativePrices\":null,\"destinationLocationID\":null},\"vehicleViewID\":2011,\"originalArgs\":{\"destinations\":[{\"latitude\":18.9690247,\"longitude\":72.8205292}],\"includeRecommended\":false,\"pickup\":{\"latitude\":18.9220554,\"longitude\":72.8330387}}}",
+                                    "preAdjustmentValue": "₹222.76",
+                                    "__typename": "RVWebCommonFare"
+                                }
+                            ],
+                            "hasPromo": true,
+                            "hasRidePass": false,
+                            "hourly": null,
+                            "iconType": "TAG",
+                            "id": "2011",
+                            "is3p": false,
+                            "isAvailable": true,
+                            "legalConsent": null,
+                            "parentProductUuid": "6a8e56b8-914e-4b48-a387-e6ad21d9c00c",
+                            "preAdjustmentValue": "₹222.76",
+                            "productImageUrl": "https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/Hatchback.png",
+                            "productUuid": "6e5f10a5-9aab-5f5e-8365-b582219ea42f",
+                            "reserveEnabled": false,
+                            "__typename": "RVWebCommonProduct"
+                        },
+                        {
+                            "badges": [],
+                            "cityID": "215",
+                            "currencyCode": "INR",
+                            "description": "UberXL",
+                            "detailedDescription": "Comfortable SUVs",
+                            "discountPrimary": "",
+                            "displayName": "UberXL",
+                            "estimatedTripTime": 1863,
+                            "etaStringShort": "7 mins",
+                            "fares": [
+                                {
+                                    "capacity": 6,
+                                    "discountPrimary": "",
+                                    "fare": "₹300.11",
+                                    "fareAmountE5": 30011000,
+                                    "hasPromo": false,
+                                    "hasRidePass": false,
+                                    "meta": "{\"cityID\":\"215\",\"countryIso2\":\"IN\",\"etd\":{\"meta\":{\"isShownEtd\":null,\"cryptoVersion\":null,\"encryptedEtd\":null,\"lighthouseRequestUuid\":\"9b005bdb-69a8-46c0-aab5-25f040dff59c\"},\"state\":null,\"guaranteedTripTime\":null,\"pickupRequestTime\":null,\"stateShortDescription\":null,\"stateTimeDescription\":null,\"stateDetailedDescription\":null,\"creditsDescription\":null,\"stateDescriptionImageUrl\":null,\"estimatedTripTime\":1863,\"deviceTimeData\":null,\"tripUUID\":null,\"comparisonTripTime\":null,\"legalDisclaimer\":\"Your \\\"latest arrival time\\\" factors in traffic and any additional pickups and drop-offs along your route. It is not a guarantee.\",\"estimateRequestTime\":0,\"stateHeaderDescription\":null,\"etdDisplayString\":\"\",\"estimatedSoloOnTripTime\":1269},\"fareEstimateInfo\":{},\"fareFlowUUID\":\"60124551-799a-48ae-a5b4-10596365e149\",\"fareRequestUUID\":\"bcc6bbef-266f-42bc-886f-58a3cd8618e7\",\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"fareUUID\":\"\",\"parentProductTypeUUID\":\"60b76812-c307-4076-b83b-fcb36e75da07\",\"pricingParams\":{\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"packageVariantUUID\":\"bcc6bbef-266f-42bc-886f-58a3cd8618e7\",\"requestLocation\":{\"latitude\":18.9220554,\"longitude\":72.8330387}},\"productUuid\":\"b0804676-b6be-512a-a58c-8b779129533a\",\"upfrontFare\":{\"capacity\":1,\"currencyCode\":\"INR\",\"destinationLat\":18.9690247,\"destinationLng\":72.8205292,\"fare\":\"300.11\",\"originLat\":18.9220554,\"originLng\":72.8330387,\"signature\":{\"expiresAt\":1732987021,\"issuedAt\":1732986781,\"signature\":\"{\\\"packageVariantUUID\\\":\\\"bcc6bbef-266f-42bc-886f-58a3cd8618e7\\\",\\\"fareSessionUUID\\\":\\\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\\\",\\\"fareFlowUUID\\\":\\\"60124551-799a-48ae-a5b4-10596365e149\\\"}\",\"version\":\"pricing_params_v1\"},\"vehicleViewId\":2723,\"estimationMethod\":null,\"knnDistance\":null,\"discountedFare\":null,\"ruleNames\":null,\"uuid\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"source\":null,\"ezpzFareBreakdown\":null,\"unmatchedKnnFare\":null,\"estimatedDuration\":null,\"dynamicFareInfo\":{\"isSobriety\":false,\"multiplier\":1,\"surgeSuppressionThreshold\":0,\"uuid\":\"ac268f58-0ef2-4241-ab3e-e838a3cd70d0\"},\"surgeMultiplier\":1,\"matchedKnnFare\":null,\"originalFare\":null,\"knnDuration\":null,\"ezpzFareEstimate\":null,\"originalFarePrePromo\":null,\"estimatedDistance\":null,\"knnFare\":null,\"ufpType\":null,\"typeSpecificData\":null,\"viaLocations\":[],\"unmodifiedDistance\":6410,\"alternativePrices\":null,\"destinationLocationID\":null},\"vehicleViewID\":2723,\"originalArgs\":{\"destinations\":[{\"latitude\":18.9690247,\"longitude\":72.8205292}],\"includeRecommended\":false,\"pickup\":{\"latitude\":18.9220554,\"longitude\":72.8330387}}}",
+                                    "preAdjustmentValue": "",
+                                    "__typename": "RVWebCommonFare"
+                                }
+                            ],
+                            "hasPromo": false,
+                            "hasRidePass": false,
+                            "hourly": null,
+                            "iconType": "",
+                            "id": "2723",
+                            "is3p": false,
+                            "isAvailable": true,
+                            "legalConsent": null,
+                            "parentProductUuid": "60b76812-c307-4076-b83b-fcb36e75da07",
+                            "preAdjustmentValue": "",
+                            "productImageUrl": "https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/package_UberXL_new_2022.png",
+                            "productUuid": "b0804676-b6be-512a-a58c-8b779129533a",
+                            "reserveEnabled": false,
+                            "__typename": "RVWebCommonProduct"
+                        },
+                        {
+                            "badges": [],
+                            "cityID": "215",
+                            "currencyCode": "INR",
+                            "description": "Go Sedan",
+                            "detailedDescription": "Affordable sedans",
+                            "discountPrimary": "20%",
+                            "displayName": "Go Sedan",
+                            "estimatedTripTime": 1984,
+                            "etaStringShort": "10 mins",
+                            "fares": [
+                                {
+                                    "capacity": 4,
+                                    "discountPrimary": "20%",
+                                    "fare": "₹185.66",
+                                    "fareAmountE5": 18566000,
+                                    "hasPromo": true,
+                                    "hasRidePass": false,
+                                    "meta": "{\"cityID\":\"215\",\"countryIso2\":\"IN\",\"etd\":{\"meta\":{\"isShownEtd\":null,\"cryptoVersion\":null,\"encryptedEtd\":null,\"lighthouseRequestUuid\":\"9b005bdb-69a8-46c0-aab5-25f040dff59c\"},\"state\":null,\"guaranteedTripTime\":null,\"pickupRequestTime\":null,\"stateShortDescription\":null,\"stateTimeDescription\":null,\"stateDetailedDescription\":null,\"creditsDescription\":null,\"stateDescriptionImageUrl\":null,\"estimatedTripTime\":1984,\"deviceTimeData\":null,\"tripUUID\":null,\"comparisonTripTime\":null,\"legalDisclaimer\":\"Your \\\"latest arrival time\\\" factors in traffic and any additional pickups and drop-offs along your route. It is not a guarantee.\",\"estimateRequestTime\":0,\"stateHeaderDescription\":null,\"etdDisplayString\":\"\",\"estimatedSoloOnTripTime\":1269},\"fareEstimateInfo\":{},\"fareFlowUUID\":\"60124551-799a-48ae-a5b4-10596365e149\",\"fareRequestUUID\":\"47af119b-a2ff-4121-863a-6144e767909e\",\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"fareUUID\":\"\",\"parentProductTypeUUID\":\"6a8e56b8-914e-4b48-a387-e6ad21d9c00c\",\"pricingParams\":{\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"packageVariantUUID\":\"47af119b-a2ff-4121-863a-6144e767909e\",\"requestLocation\":{\"latitude\":18.9220554,\"longitude\":72.8330387}},\"productUuid\":\"a086e29a-8314-590b-a6a1-70f3ed00c284\",\"upfrontFare\":{\"capacity\":1,\"currencyCode\":\"INR\",\"destinationLat\":18.9690247,\"destinationLng\":72.8205292,\"fare\":\"185.66\",\"originLat\":18.9220554,\"originLng\":72.8330387,\"signature\":{\"expiresAt\":1732987021,\"issuedAt\":1732986781,\"signature\":\"{\\\"packageVariantUUID\\\":\\\"47af119b-a2ff-4121-863a-6144e767909e\\\",\\\"fareSessionUUID\\\":\\\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\\\",\\\"fareFlowUUID\\\":\\\"60124551-799a-48ae-a5b4-10596365e149\\\"}\",\"version\":\"pricing_params_v1\"},\"vehicleViewId\":20062541,\"estimationMethod\":null,\"knnDistance\":null,\"discountedFare\":null,\"ruleNames\":null,\"uuid\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"source\":null,\"ezpzFareBreakdown\":null,\"unmatchedKnnFare\":null,\"estimatedDuration\":null,\"dynamicFareInfo\":{\"isSobriety\":false,\"multiplier\":1,\"surgeSuppressionThreshold\":0,\"uuid\":\"d6ba8de3-4289-4d26-aa0f-407dabe67747\"},\"surgeMultiplier\":1,\"matchedKnnFare\":null,\"originalFare\":null,\"knnDuration\":null,\"ezpzFareEstimate\":null,\"originalFarePrePromo\":null,\"estimatedDistance\":null,\"knnFare\":null,\"ufpType\":null,\"typeSpecificData\":null,\"viaLocations\":[],\"unmodifiedDistance\":6410,\"alternativePrices\":null,\"destinationLocationID\":null},\"vehicleViewID\":20062541,\"originalArgs\":{\"destinations\":[{\"latitude\":18.9690247,\"longitude\":72.8205292}],\"includeRecommended\":false,\"pickup\":{\"latitude\":18.9220554,\"longitude\":72.8330387}}}",
+                                    "preAdjustmentValue": "₹232.07",
+                                    "__typename": "RVWebCommonFare"
+                                }
+                            ],
+                            "hasPromo": true,
+                            "hasRidePass": false,
+                            "hourly": null,
+                            "iconType": "TAG",
+                            "id": "20062541",
+                            "is3p": false,
+                            "isAvailable": true,
+                            "legalConsent": null,
+                            "parentProductUuid": "6a8e56b8-914e-4b48-a387-e6ad21d9c00c",
+                            "preAdjustmentValue": "₹232.07",
+                            "productImageUrl": "https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_v1.png",
+                            "productUuid": "a086e29a-8314-590b-a6a1-70f3ed00c284",
+                            "reserveEnabled": false,
+                            "__typename": "RVWebCommonProduct"
+                        }
+                    ],
+                    "title": "Recommended",
+                    "__typename": "RVWebCommonProductTier"
+                },
+                {
+                    "products": [
+                        {
+                            "badges": [],
+                            "cityID": "215",
+                            "currencyCode": "INR",
+                            "description": "Shuttle",
+                            "detailedDescription": "Shared rides, lowest cost",
+                            "discountPrimary": "",
+                            "displayName": "Shuttle",
+                            "estimatedTripTime": 1544,
+                            "etaStringShort": "",
+                            "fares": [
+                                {
+                                    "capacity": 1,
+                                    "discountPrimary": "",
+                                    "fare": "₹0.00",
+                                    "fareAmountE5": 0,
+                                    "hasPromo": false,
+                                    "hasRidePass": false,
+                                    "meta": "{\"cityID\":\"215\",\"countryIso2\":\"IN\",\"etd\":{\"meta\":{\"isShownEtd\":null,\"cryptoVersion\":null,\"encryptedEtd\":null,\"lighthouseRequestUuid\":\"9b005bdb-69a8-46c0-aab5-25f040dff59c\"},\"state\":null,\"guaranteedTripTime\":null,\"pickupRequestTime\":null,\"stateShortDescription\":null,\"stateTimeDescription\":null,\"stateDetailedDescription\":null,\"creditsDescription\":null,\"stateDescriptionImageUrl\":null,\"estimatedTripTime\":1544,\"deviceTimeData\":null,\"tripUUID\":null,\"comparisonTripTime\":1544,\"legalDisclaimer\":\"Your \\\"latest arrival time\\\" factors in traffic and any additional pickups and drop-offs along your route. It is not a guarantee.\",\"estimateRequestTime\":0,\"stateHeaderDescription\":null,\"etdDisplayString\":\"\",\"estimatedSoloOnTripTime\":1269},\"fareEstimateInfo\":{},\"fareFlowUUID\":\"5da4df58-edda-4853-b6e8-d02ad8ccaf46\",\"fareRequestUUID\":\"79e268f4-9080-4985-ab40-39d126ed8903\",\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"fareUUID\":\"\",\"parentProductTypeUUID\":\"82403b4e-e303-4aaa-bb89-b89722a79a16\",\"pricingParams\":{\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"packageVariantUUID\":\"79e268f4-9080-4985-ab40-39d126ed8903\",\"requestLocation\":{\"latitude\":18.9220554,\"longitude\":72.8330387}},\"productUuid\":\"f84ef034-7748-5879-9fc0-dff38b1798bc\",\"upfrontFare\":{\"capacity\":1,\"currencyCode\":\"INR\",\"destinationLat\":18.9690247,\"destinationLng\":72.8205292,\"fare\":\"0\",\"originLat\":18.9220554,\"originLng\":72.8330387,\"signature\":{\"expiresAt\":1732987021,\"issuedAt\":1732986781,\"signature\":\"{\\\"packageVariantUUID\\\":\\\"79e268f4-9080-4985-ab40-39d126ed8903\\\",\\\"fareSessionUUID\\\":\\\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\\\",\\\"fareFlowUUID\\\":\\\"5da4df58-edda-4853-b6e8-d02ad8ccaf46\\\"}\",\"version\":\"fof_v1\"},\"vehicleViewId\":20056125,\"estimationMethod\":null,\"knnDistance\":null,\"discountedFare\":null,\"ruleNames\":null,\"uuid\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"source\":null,\"ezpzFareBreakdown\":null,\"unmatchedKnnFare\":null,\"estimatedDuration\":null,\"dynamicFareInfo\":{\"isSobriety\":false,\"multiplier\":1,\"surgeSuppressionThreshold\":0,\"uuid\":\"\"},\"surgeMultiplier\":1,\"matchedKnnFare\":null,\"originalFare\":null,\"knnDuration\":null,\"ezpzFareEstimate\":null,\"originalFarePrePromo\":null,\"estimatedDistance\":null,\"knnFare\":null,\"ufpType\":null,\"typeSpecificData\":null,\"viaLocations\":[],\"unmodifiedDistance\":6410,\"alternativePrices\":null,\"destinationLocationID\":null},\"vehicleViewID\":20056125,\"originalArgs\":{\"destinations\":[{\"latitude\":18.9690247,\"longitude\":72.8205292}],\"includeRecommended\":false,\"pickup\":{\"latitude\":18.9220554,\"longitude\":72.8330387}}}",
+                                    "preAdjustmentValue": "",
+                                    "__typename": "RVWebCommonFare"
+                                },
+                                {
+                                    "capacity": 2,
+                                    "discountPrimary": "",
+                                    "fare": "₹0.00",
+                                    "fareAmountE5": 0,
+                                    "hasPromo": false,
+                                    "hasRidePass": false,
+                                    "meta": "{\"cityID\":\"215\",\"countryIso2\":\"IN\",\"etd\":{\"meta\":{\"isShownEtd\":null,\"cryptoVersion\":null,\"encryptedEtd\":null,\"lighthouseRequestUuid\":\"9b005bdb-69a8-46c0-aab5-25f040dff59c\"},\"state\":null,\"guaranteedTripTime\":null,\"pickupRequestTime\":null,\"stateShortDescription\":null,\"stateTimeDescription\":null,\"stateDetailedDescription\":null,\"creditsDescription\":null,\"stateDescriptionImageUrl\":null,\"estimatedTripTime\":1544,\"deviceTimeData\":null,\"tripUUID\":null,\"comparisonTripTime\":1544,\"legalDisclaimer\":\"Your \\\"latest arrival time\\\" factors in traffic and any additional pickups and drop-offs along your route. It is not a guarantee.\",\"estimateRequestTime\":0,\"stateHeaderDescription\":null,\"etdDisplayString\":\"\",\"estimatedSoloOnTripTime\":1269},\"fareEstimateInfo\":{},\"fareFlowUUID\":\"5da4df58-edda-4853-b6e8-d02ad8ccaf46\",\"fareRequestUUID\":\"5758f814-c73f-49ae-803b-6fadf9d1e834\",\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"fareUUID\":\"\",\"parentProductTypeUUID\":\"82403b4e-e303-4aaa-bb89-b89722a79a16\",\"pricingParams\":{\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"packageVariantUUID\":\"5758f814-c73f-49ae-803b-6fadf9d1e834\",\"requestLocation\":{\"latitude\":18.9220554,\"longitude\":72.8330387}},\"productUuid\":\"f84ef034-7748-5879-9fc0-dff38b1798bc\",\"upfrontFare\":{\"capacity\":2,\"currencyCode\":\"INR\",\"destinationLat\":18.9690247,\"destinationLng\":72.8205292,\"fare\":\"0\",\"originLat\":18.9220554,\"originLng\":72.8330387,\"signature\":{\"expiresAt\":1732987021,\"issuedAt\":1732986781,\"signature\":\"{\\\"packageVariantUUID\\\":\\\"5758f814-c73f-49ae-803b-6fadf9d1e834\\\",\\\"fareSessionUUID\\\":\\\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\\\",\\\"fareFlowUUID\\\":\\\"5da4df58-edda-4853-b6e8-d02ad8ccaf46\\\"}\",\"version\":\"fof_v1\"},\"vehicleViewId\":20056125,\"estimationMethod\":null,\"knnDistance\":null,\"discountedFare\":null,\"ruleNames\":null,\"uuid\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"source\":null,\"ezpzFareBreakdown\":null,\"unmatchedKnnFare\":null,\"estimatedDuration\":null,\"dynamicFareInfo\":{\"isSobriety\":false,\"multiplier\":1,\"surgeSuppressionThreshold\":0,\"uuid\":\"\"},\"surgeMultiplier\":1,\"matchedKnnFare\":null,\"originalFare\":null,\"knnDuration\":null,\"ezpzFareEstimate\":null,\"originalFarePrePromo\":null,\"estimatedDistance\":null,\"knnFare\":null,\"ufpType\":null,\"typeSpecificData\":null,\"viaLocations\":[],\"unmodifiedDistance\":6410,\"alternativePrices\":null,\"destinationLocationID\":null},\"vehicleViewID\":20056125,\"originalArgs\":{\"destinations\":[{\"latitude\":18.9690247,\"longitude\":72.8205292}],\"includeRecommended\":false,\"pickup\":{\"latitude\":18.9220554,\"longitude\":72.8330387}}}",
+                                    "preAdjustmentValue": "",
+                                    "__typename": "RVWebCommonFare"
+                                },
+                                {
+                                    "capacity": 3,
+                                    "discountPrimary": "",
+                                    "fare": "₹0.00",
+                                    "fareAmountE5": 0,
+                                    "hasPromo": false,
+                                    "hasRidePass": false,
+                                    "meta": "{\"cityID\":\"215\",\"countryIso2\":\"IN\",\"etd\":{\"meta\":{\"isShownEtd\":null,\"cryptoVersion\":null,\"encryptedEtd\":null,\"lighthouseRequestUuid\":\"9b005bdb-69a8-46c0-aab5-25f040dff59c\"},\"state\":null,\"guaranteedTripTime\":null,\"pickupRequestTime\":null,\"stateShortDescription\":null,\"stateTimeDescription\":null,\"stateDetailedDescription\":null,\"creditsDescription\":null,\"stateDescriptionImageUrl\":null,\"estimatedTripTime\":1544,\"deviceTimeData\":null,\"tripUUID\":null,\"comparisonTripTime\":1544,\"legalDisclaimer\":\"Your \\\"latest arrival time\\\" factors in traffic and any additional pickups and drop-offs along your route. It is not a guarantee.\",\"estimateRequestTime\":0,\"stateHeaderDescription\":null,\"etdDisplayString\":\"\",\"estimatedSoloOnTripTime\":1269},\"fareEstimateInfo\":{},\"fareFlowUUID\":\"5da4df58-edda-4853-b6e8-d02ad8ccaf46\",\"fareRequestUUID\":\"35739ec8-db82-4c49-a947-69a360b3b882\",\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"fareUUID\":\"\",\"parentProductTypeUUID\":\"82403b4e-e303-4aaa-bb89-b89722a79a16\",\"pricingParams\":{\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"packageVariantUUID\":\"35739ec8-db82-4c49-a947-69a360b3b882\",\"requestLocation\":{\"latitude\":18.9220554,\"longitude\":72.8330387}},\"productUuid\":\"f84ef034-7748-5879-9fc0-dff38b1798bc\",\"upfrontFare\":{\"capacity\":3,\"currencyCode\":\"INR\",\"destinationLat\":18.9690247,\"destinationLng\":72.8205292,\"fare\":\"0\",\"originLat\":18.9220554,\"originLng\":72.8330387,\"signature\":{\"expiresAt\":1732987021,\"issuedAt\":1732986781,\"signature\":\"{\\\"packageVariantUUID\\\":\\\"35739ec8-db82-4c49-a947-69a360b3b882\\\",\\\"fareSessionUUID\\\":\\\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\\\",\\\"fareFlowUUID\\\":\\\"5da4df58-edda-4853-b6e8-d02ad8ccaf46\\\"}\",\"version\":\"fof_v1\"},\"vehicleViewId\":20056125,\"estimationMethod\":null,\"knnDistance\":null,\"discountedFare\":null,\"ruleNames\":null,\"uuid\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"source\":null,\"ezpzFareBreakdown\":null,\"unmatchedKnnFare\":null,\"estimatedDuration\":null,\"dynamicFareInfo\":{\"isSobriety\":false,\"multiplier\":1,\"surgeSuppressionThreshold\":0,\"uuid\":\"\"},\"surgeMultiplier\":1,\"matchedKnnFare\":null,\"originalFare\":null,\"knnDuration\":null,\"ezpzFareEstimate\":null,\"originalFarePrePromo\":null,\"estimatedDistance\":null,\"knnFare\":null,\"ufpType\":null,\"typeSpecificData\":null,\"viaLocations\":[],\"unmodifiedDistance\":6410,\"alternativePrices\":null,\"destinationLocationID\":null},\"vehicleViewID\":20056125,\"originalArgs\":{\"destinations\":[{\"latitude\":18.9690247,\"longitude\":72.8205292}],\"includeRecommended\":false,\"pickup\":{\"latitude\":18.9220554,\"longitude\":72.8330387}}}",
+                                    "preAdjustmentValue": "",
+                                    "__typename": "RVWebCommonFare"
+                                }
+                            ],
+                            "hasPromo": false,
+                            "hasRidePass": false,
+                            "hourly": null,
+                            "iconType": "",
+                            "id": "20056125",
+                            "is3p": false,
+                            "isAvailable": true,
+                            "legalConsent": null,
+                            "parentProductUuid": "82403b4e-e303-4aaa-bb89-b89722a79a16",
+                            "preAdjustmentValue": "",
+                            "productImageUrl": "https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/HCV_v1.png",
+                            "productUuid": "f84ef034-7748-5879-9fc0-dff38b1798bc",
+                            "reserveEnabled": false,
+                            "__typename": "RVWebCommonProduct"
+                        },
+                        {
+                            "badges": [],
+                            "cityID": "215",
+                            "currencyCode": "INR",
+                            "description": "Premier",
+                            "detailedDescription": "Comfortable sedans, top-quality drivers",
+                            "discountPrimary": "",
+                            "displayName": "Premier",
+                            "estimatedTripTime": 1769,
+                            "etaStringShort": "7 mins",
+                            "fares": [
+                                {
+                                    "capacity": 4,
+                                    "discountPrimary": "",
+                                    "fare": "₹295.67",
+                                    "fareAmountE5": 29567000,
+                                    "hasPromo": false,
+                                    "hasRidePass": false,
+                                    "meta": "{\"cityID\":\"215\",\"countryIso2\":\"IN\",\"etd\":{\"meta\":{\"isShownEtd\":null,\"cryptoVersion\":null,\"encryptedEtd\":null,\"lighthouseRequestUuid\":\"9b005bdb-69a8-46c0-aab5-25f040dff59c\"},\"state\":null,\"guaranteedTripTime\":null,\"pickupRequestTime\":null,\"stateShortDescription\":null,\"stateTimeDescription\":null,\"stateDetailedDescription\":null,\"creditsDescription\":null,\"stateDescriptionImageUrl\":null,\"estimatedTripTime\":1769,\"deviceTimeData\":null,\"tripUUID\":null,\"comparisonTripTime\":null,\"legalDisclaimer\":\"Your \\\"latest arrival time\\\" factors in traffic and any additional pickups and drop-offs along your route. It is not a guarantee.\",\"estimateRequestTime\":0,\"stateHeaderDescription\":null,\"etdDisplayString\":\"\",\"estimatedSoloOnTripTime\":1269},\"fareEstimateInfo\":{},\"fareFlowUUID\":\"60124551-799a-48ae-a5b4-10596365e149\",\"fareRequestUUID\":\"798387de-5887-4f8f-bbdc-537d00481500\",\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"fareUUID\":\"\",\"parentProductTypeUUID\":\"4cefa6a0-efb5-41dc-a8bb-870f2c3212ba\",\"pricingParams\":{\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"packageVariantUUID\":\"798387de-5887-4f8f-bbdc-537d00481500\",\"requestLocation\":{\"latitude\":18.9220554,\"longitude\":72.8330387}},\"productUuid\":\"3b144d1b-3889-5036-84d1-f6aa3663ed34\",\"upfrontFare\":{\"capacity\":1,\"currencyCode\":\"INR\",\"destinationLat\":18.9690247,\"destinationLng\":72.8205292,\"fare\":\"295.67\",\"originLat\":18.9220554,\"originLng\":72.8330387,\"signature\":{\"expiresAt\":1732987021,\"issuedAt\":1732986781,\"signature\":\"{\\\"packageVariantUUID\\\":\\\"798387de-5887-4f8f-bbdc-537d00481500\\\",\\\"fareSessionUUID\\\":\\\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\\\",\\\"fareFlowUUID\\\":\\\"60124551-799a-48ae-a5b4-10596365e149\\\"}\",\"version\":\"pricing_params_v1\"},\"vehicleViewId\":1575,\"estimationMethod\":null,\"knnDistance\":null,\"discountedFare\":null,\"ruleNames\":null,\"uuid\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"source\":null,\"ezpzFareBreakdown\":null,\"unmatchedKnnFare\":null,\"estimatedDuration\":null,\"dynamicFareInfo\":{\"isSobriety\":false,\"multiplier\":1,\"surgeSuppressionThreshold\":0,\"uuid\":\"d6ba8de3-4289-4d26-aa0f-407dabe67747\"},\"surgeMultiplier\":1,\"matchedKnnFare\":null,\"originalFare\":null,\"knnDuration\":null,\"ezpzFareEstimate\":null,\"originalFarePrePromo\":null,\"estimatedDistance\":null,\"knnFare\":null,\"ufpType\":null,\"typeSpecificData\":null,\"viaLocations\":[],\"unmodifiedDistance\":6410,\"alternativePrices\":null,\"destinationLocationID\":null},\"vehicleViewID\":1575,\"originalArgs\":{\"destinations\":[{\"latitude\":18.9690247,\"longitude\":72.8205292}],\"includeRecommended\":false,\"pickup\":{\"latitude\":18.9220554,\"longitude\":72.8330387}}}",
+                                    "preAdjustmentValue": "",
+                                    "__typename": "RVWebCommonFare"
+                                }
+                            ],
+                            "hasPromo": false,
+                            "hasRidePass": false,
+                            "hourly": null,
+                            "iconType": "",
+                            "id": "1575",
+                            "is3p": false,
+                            "isAvailable": true,
+                            "legalConsent": null,
+                            "parentProductUuid": "4cefa6a0-efb5-41dc-a8bb-870f2c3212ba",
+                            "preAdjustmentValue": "",
+                            "productImageUrl": "https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/package_UberComfort_new_2022.png",
+                            "productUuid": "3b144d1b-3889-5036-84d1-f6aa3663ed34",
+                            "reserveEnabled": false,
+                            "__typename": "RVWebCommonProduct"
+                        },
+                        {
+                            "badges": [],
+                            "cityID": "215",
+                            "currencyCode": "INR",
+                            "description": "Package",
+                            "detailedDescription": "Send packages to loved ones",
+                            "discountPrimary": "",
+                            "displayName": "Package",
+                            "estimatedTripTime": 0,
+                            "etaStringShort": "",
+                            "fares": [
+                                {
+                                    "capacity": 0,
+                                    "discountPrimary": "",
+                                    "fare": "₹93.24",
+                                    "fareAmountE5": 9324000,
+                                    "hasPromo": false,
+                                    "hasRidePass": false,
+                                    "meta": "{\"cityID\":\"215\",\"countryIso2\":\"IN\",\"etd\":{\"meta\":{\"lighthouseRequestUuid\":\"\"}},\"fareEstimateInfo\":{},\"fareFlowUUID\":\"60124551-799a-48ae-a5b4-10596365e149\",\"fareRequestUUID\":\"723620b8-83a1-4f63-9677-d146a4e5e179\",\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"fareUUID\":\"\",\"parentProductTypeUUID\":\"93ef20c4-5b30-4d80-8a13-e4cad0ce8c13\",\"pricingParams\":{\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"packageVariantUUID\":\"723620b8-83a1-4f63-9677-d146a4e5e179\",\"requestLocation\":{\"latitude\":18.9220554,\"longitude\":72.8330387}},\"productUuid\":\"955c23f7-b353-5137-8827-327782914460\",\"upfrontFare\":{\"capacity\":1,\"currencyCode\":\"INR\",\"destinationLat\":18.9690247,\"destinationLng\":72.8205292,\"fare\":\"93.24\",\"originLat\":18.9220554,\"originLng\":72.8330387,\"signature\":{\"expiresAt\":1732987021,\"issuedAt\":1732986781,\"signature\":\"{\\\"packageVariantUUID\\\":\\\"723620b8-83a1-4f63-9677-d146a4e5e179\\\",\\\"fareSessionUUID\\\":\\\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\\\",\\\"fareFlowUUID\\\":\\\"60124551-799a-48ae-a5b4-10596365e149\\\"}\",\"version\":\"pricing_params_v1\"},\"vehicleViewId\":20028035,\"estimationMethod\":null,\"knnDistance\":null,\"discountedFare\":null,\"ruleNames\":null,\"uuid\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"source\":null,\"ezpzFareBreakdown\":null,\"unmatchedKnnFare\":null,\"estimatedDuration\":null,\"dynamicFareInfo\":{\"isSobriety\":false,\"multiplier\":1,\"surgeSuppressionThreshold\":0,\"uuid\":\"7050b425-733f-4f55-ac2d-bf067c806b88\"},\"surgeMultiplier\":1,\"matchedKnnFare\":null,\"originalFare\":null,\"knnDuration\":null,\"ezpzFareEstimate\":null,\"originalFarePrePromo\":null,\"estimatedDistance\":null,\"knnFare\":null,\"ufpType\":null,\"typeSpecificData\":null,\"viaLocations\":[],\"unmodifiedDistance\":6410,\"alternativePrices\":null,\"destinationLocationID\":null},\"vehicleViewID\":20028035,\"originalArgs\":{\"destinations\":[{\"latitude\":18.9690247,\"longitude\":72.8205292}],\"includeRecommended\":false,\"pickup\":{\"latitude\":18.9220554,\"longitude\":72.8330387}}}",
+                                    "preAdjustmentValue": "",
+                                    "__typename": "RVWebCommonFare"
+                                }
+                            ],
+                            "hasPromo": false,
+                            "hasRidePass": false,
+                            "hourly": null,
+                            "iconType": "",
+                            "id": "20028035",
+                            "is3p": false,
+                            "isAvailable": false,
+                            "legalConsent": null,
+                            "parentProductUuid": "93ef20c4-5b30-4d80-8a13-e4cad0ce8c13",
+                            "preAdjustmentValue": "",
+                            "productImageUrl": "https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/uber_connect_1.png",
+                            "productUuid": "955c23f7-b353-5137-8827-327782914460",
+                            "reserveEnabled": false,
+                            "__typename": "RVWebCommonProduct"
+                        }
+                    ],
+                    "title": "Economy",
+                    "__typename": "RVWebCommonProductTier"
+                },
+                {
+                    "products": [
+                        {
+                            "badges": [],
+                            "cityID": "215",
+                            "currencyCode": "INR",
+                            "description": "Uber Taxi",
+                            "detailedDescription": "Local non-AC taxi cabs",
+                            "discountPrimary": "",
+                            "displayName": "Uber Taxi",
+                            "estimatedTripTime": 1820,
+                            "etaStringShort": "7 mins",
+                            "fares": [
+                                {
+                                    "capacity": 0,
+                                    "discountPrimary": "",
+                                    "fare": "₹151.25",
+                                    "fareAmountE5": 15125000,
+                                    "hasPromo": false,
+                                    "hasRidePass": false,
+                                    "meta": "{\"cityID\":\"215\",\"countryIso2\":\"IN\",\"etd\":{\"meta\":{\"isShownEtd\":null,\"cryptoVersion\":null,\"encryptedEtd\":null,\"lighthouseRequestUuid\":\"9b005bdb-69a8-46c0-aab5-25f040dff59c\"},\"state\":null,\"guaranteedTripTime\":null,\"pickupRequestTime\":null,\"stateShortDescription\":null,\"stateTimeDescription\":null,\"stateDetailedDescription\":null,\"creditsDescription\":null,\"stateDescriptionImageUrl\":null,\"estimatedTripTime\":1820,\"deviceTimeData\":null,\"tripUUID\":null,\"comparisonTripTime\":null,\"legalDisclaimer\":\"Your \\\"latest arrival time\\\" factors in traffic and any additional pickups and drop-offs along your route. It is not a guarantee.\",\"estimateRequestTime\":0,\"stateHeaderDescription\":null,\"etdDisplayString\":\"\",\"estimatedSoloOnTripTime\":1269},\"fareEstimateInfo\":{},\"fareFlowUUID\":\"60124551-799a-48ae-a5b4-10596365e149\",\"fareRequestUUID\":\"0a2fa25a-11ac-4b2b-ae2b-a816f2f45f6a\",\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"fareUUID\":\"\",\"parentProductTypeUUID\":\"f1faedb7-5825-484f-b236-24e2cd95ec23\",\"pricingParams\":{\"fareSessionUUID\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"packageVariantUUID\":\"0a2fa25a-11ac-4b2b-ae2b-a816f2f45f6a\",\"requestLocation\":{\"latitude\":18.9220554,\"longitude\":72.8330387}},\"productUuid\":\"08c11681-4bbb-54f1-90fa-b9ef8501a3fb\",\"upfrontFare\":{\"capacity\":1,\"currencyCode\":\"INR\",\"destinationLat\":18.9690247,\"destinationLng\":72.8205292,\"fare\":\"151.25\",\"originLat\":18.9220554,\"originLng\":72.8330387,\"signature\":{\"expiresAt\":1732987021,\"issuedAt\":1732986781,\"signature\":\"{\\\"packageVariantUUID\\\":\\\"0a2fa25a-11ac-4b2b-ae2b-a816f2f45f6a\\\",\\\"fareSessionUUID\\\":\\\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\\\",\\\"fareFlowUUID\\\":\\\"60124551-799a-48ae-a5b4-10596365e149\\\"}\",\"version\":\"pricing_params_v1\"},\"vehicleViewId\":20036109,\"estimationMethod\":null,\"knnDistance\":null,\"discountedFare\":null,\"ruleNames\":null,\"uuid\":\"77a45e2e-8c69-4cd6-a50f-1d6f7d1a2b70\",\"source\":null,\"ezpzFareBreakdown\":null,\"unmatchedKnnFare\":null,\"estimatedDuration\":null,\"dynamicFareInfo\":{\"isSobriety\":false,\"multiplier\":1,\"surgeSuppressionThreshold\":0,\"uuid\":\"e1e37086-1d8c-40b4-bbac-f7f4a6941fbd\"},\"surgeMultiplier\":1,\"matchedKnnFare\":null,\"originalFare\":null,\"knnDuration\":null,\"ezpzFareEstimate\":null,\"originalFarePrePromo\":null,\"estimatedDistance\":null,\"knnFare\":null,\"ufpType\":null,\"typeSpecificData\":null,\"viaLocations\":[],\"unmodifiedDistance\":6410,\"alternativePrices\":null,\"destinationLocationID\":null},\"vehicleViewID\":20036109,\"originalArgs\":{\"destinations\":[{\"latitude\":18.9690247,\"longitude\":72.8205292}],\"includeRecommended\":false,\"pickup\":{\"latitude\":18.9220554,\"longitude\":72.8330387}}}",
+                                    "preAdjustmentValue": "",
+                                    "__typename": "RVWebCommonFare"
+                                }
+                            ],
+                            "hasPromo": false,
+                            "hasRidePass": false,
+                            "hourly": null,
+                            "iconType": "",
+                            "id": "20036109",
+                            "is3p": false,
+                            "isAvailable": true,
+                            "legalConsent": null,
+                            "parentProductUuid": "f1faedb7-5825-484f-b236-24e2cd95ec23",
+                            "preAdjustmentValue": "",
+                            "productImageUrl": "https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/Taxi_v1.png",
+                            "productUuid": "08c11681-4bbb-54f1-90fa-b9ef8501a3fb",
+                            "reserveEnabled": false,
+                            "__typename": "RVWebCommonProduct"
+                        }
+                    ],
+                    "title": "More",
+                    "__typename": "RVWebCommonProductTier"
+                }
+            ],
+            "__typename": "RVWebCommonProductsResponse"
+        }
+    }
+}
