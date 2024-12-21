@@ -1,0 +1,162 @@
+
+Stage - 1  Requirements Discussion :
+Rate Limiter Should Handle :
+1. Multiple users Sending same requests at a time
+2. if a user has send some request in a interval and then stopped sending request it should evict the entry
+for this user from the system
+3. same user can send multiple request at a time so its counter should be handled in that way only
+4. Multiple Strategy For Rate Limiting Can be Used
+
+
+Stage - 2  Entity Mapping :
+
+
+UserWindow :
+LongAdder counter // no of requests sent in current time frame
+volatile Long windowStart // time in millis when first request was made
+volatile Long lastAccess // last requests by the User
+
+RateLimiterSlidingWindow :
+Long maxRequestsAllowed
+TimeFrameForRequests
+TimeFrameForRemovalOfClients
+
+TokenBucket :
+long tokens
+long maxTokens
+long refillRate
+long lastRefillTime
+long lastAccessTime
+
+RateLimiter
+RatelimitingStrategy
+ScheduledExecutorService
+
+
+
+so here we will these classes
+
+Stage - 3 : Functions
+Strategy Would be applied
+tryAcquire(String userId, long currentTime)
+clean(string userId, long currentTime)
+
+RateLimiterSlidingWindow :
+tryaquire(Long currentTime,Long timeWindow)
+getLastAccessedTime()
+
+
+TokenBukcet :
+tryConsume(long currentTIme)
+refillTokens(currentTime)
+getLastAccessTime()
+
+RateLimiter :
+tryAcquire()
+shutDown()
+
+
+Stage - 4 : Function Mapping and PseudoCode
+
+SlidingWindow :
+
+ConcurrentMap< String  , Window >
+long maxRequests
+long timeWindowInMillis
+
+tryAcquire :
+UserWindow = mp.computeIfAbsent ( matlab agar entry nahi h to compute karo)
+computeIfAbsent(userId, id -> new UserWindow(currentTime,MaxRequests)
+return tryAcqure using window
+
+cleanUp(UserId, currentTime)
+mp.entrySet().removeIf(entry ->
+(currentTime - lastAccessedTime) > timeWindowInmillis
+
+
+============
+Window :
+LongAdder counter
+windowStart
+lastAccessed
+
+tryAcquire(currentTime, timeWindow)
+{
+   lastAccess = currentTime;
+   if(currentTime - windowStart > timeWindow)
+   {
+     synchornized(this){
+         if(currentTime - windowStart > timeWindow){
+            counter -> reset()
+            windowStart = currentTime;
+         }
+     }
+   }
+
+   counter.increment()
+   return counter.sum() <= timeWindowInMillis;
+
+
+}
+
+
+
+
+TokenBucketStrategy  :
+
+CMap < String ,tokenBucket>
+maxTokens
+refilliRate
+
+truAvquire
+==> computeIfAbsent
+tryconsume call
+cleanUp --> same
+      userBuckets.entrySet().removeIf(entry ->
+            (currentTime - entry.getValue().getLastAccessTime()) > refillRateInMillis * 2);
+
+
+
+tokenBucket:
+tryConsume(long currtime)
+{
+   refillTokens(curreTime);
+   lastAccessTime = currentTIme;
+   if(tokens > 0){
+   token --;
+   return true;
+   }
+   return false;
+}
+
+void refillTkens(currentTIme){
+ timeSofAr == ct - lastRefilltime;
+  if(elapsedTime > refillTimeRate){
+
+     synchronized(this){
+        if(elapsedTime > refillTimeinRate){
+           newTokens = elapsedTime / refillRate;
+           token = min(maxToken , newToken + tokens)
+           lastRefillTime = currentTime
+
+        }
+     }
+  }
+}
+
+
+
+RateLimiter :
+Strategy
+Scheduler
+this.scheduler.scheduleAtFixedRate(() -> strategy.cleanup(null,systemCurrMills),
+eviictionTIme, evictioNIntervla, )
+
+tryAcquire( strate.acquire)
+sutdown scheduler.shutDown
+
+===================
+
+
+Stage - 5 : Optimizations
+1. Strategy pattern
