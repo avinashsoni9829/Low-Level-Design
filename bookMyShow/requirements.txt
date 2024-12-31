@@ -1,0 +1,90 @@
+Stage - 1 : Requirements:
+1. User Should be able to search for Movies
+2. User Should be able to book multiple seats for a show
+3. User should be able to cancel the booking
+
+Booking Admin:
+1. Admin Should be able to create theater , screen , seat
+2. Admin Should be able to set the SeatMatrix
+
+
+Stage - 2 : Entity
+=================================
+User :
+id
+Number
+List<Booking> bookingHistory
+=================================
+
+Event :
+id
+name
+durationInSeconds
+eventType
+
+EventType : MOVIE,CONCERT,COMEDY SHOW.
+===================================
+Movie -> Event :
+genre
+DateTime releaseDate
+
+===================================
+
+Show
+id
+Event event  [mapping]
+startDateTime
+endDateTime
+List<Seats> seats
+
+=====================================
+ShowRunner
+id
+name
+Location
+List<Show>
+
+======================================
+Seat :
+id
+isBooked
+Show [mapping]
+seatNo
+rowNo
+String version
+
+
+=======================================
+Booking
+id
+txnDateTime
+bookingStatus
+Show [ mapping ]
+List<Seat> bookedSeats
+String userId
+
+======================================
+
+
+Step 3 : Functions Mapping with Managers
+
+1. ShowManager
+2. BookingManager
+
+=======================
+ShowManager  Functionality :
+1. Add ShowRunner (ShowRunner o)
+2. Add Event (ShowRunner runner , Event data)
+3. Add Show  (Event event , Show data)
+4. Add Seat ( Show show , Seat data)
+
+===============================
+BookingManager functionality :
+1. Create Booking ( ShowRunner runner , Show show , List<Seat> seatsToBeBooked)
+=============================
+
+
+
+
+
+
