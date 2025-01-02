@@ -1,0 +1,116 @@
+Stage - 1 :
+Requirements Discussion :
+
+1.  User Should be Able to Add / Remove Contacts
+2.  User Should be Able to Block / Unblock Contacts
+3.  User Should be Able to Report a Number as Spam
+4.  User Should be Able to Search A Number Via Phone Number / Name
+5.  User Should be Able to View Blocked Contacts List
+
+6. User can mark a Contact as Favourite
+7. User can see the Favourite Contacts List
+
+Stage - 2 :
+Entity Mapping
+
+User :
+Id
+First Name
+Last Name
+Phone Number
+List<Contact> contacts
+List<Contact> blockedContacts
+List<Contact> favourites
+AccountType
+
+
+Contact:
+Id
+First Name
+Last Name
+Phone Number
+
+Global:
+List<String> Spam
+
+Stage - 3 : Function Mapping
+
+User :
+1. Create User
+2. Add Contact to Contacts
+3. Add Contact to BlockedContacts
+4. Add Contact to FavouriteList
+5. Mark a Number as Spam
+6. Search Contact
+
+
+Contact :
+1. Create Contact
+
+
+Stage - 4 : Function Pseudo Code and Integeration
+
+User :
+Map<String,User> userRepoSitory;
+Map<String,List<String>> userContactMap;
+Map<String,Contact> contactRepository;
+Map<String,List<String>> favourites [id = UserId , List<String> = Contact Ids]
+Map<String,List<String>> blockedContact[id = userId]
+Map<String,Integer> GlobalSpam;
+
+# User  createUser(UserDto dto): Add it to UserRepository
+# AddContact(String userId , ContactDto dto):
+Check First UserId Exist -> if yes then Contact
+Check if contact already Exist in User Contacts
+If Yes -> Throw Exception
+If No -> Add Contact to to the Contact Map and then Add the ID to user Contact Map
+
+
+# Add Contact to BlockedContact(String userId, String contactId)  :
+add it to the BlockedContact then remove it from the userContact [ or do soft delete ]
+
+# Add Contact to Favourite(String userId , String contactId):
+Check if contact already in Favorite otherwise Add
+
+# Mark As Spam(String contactNo):
+Add to the Spam  and increment the Counter
+
+
+# Search Contact(String Id, String contactNo) : id -> userId
+Can be Done Directly
+
+# Search Contact(String id , String name) : Using Trie
+
+# Spam Detection : Using Bloom Filters
+
+===================================================
+
+Stage 5 : Design patterns and Optmization :
+
+Trie Logic:
+
+
+
+
+Bloom Filter logic :
+
+
+
+===================================================
+
+Stage 6 : Future Scope and Advancements and DB Designs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
