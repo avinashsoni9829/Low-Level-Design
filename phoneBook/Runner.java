@@ -11,8 +11,9 @@ public class Runner {
         PhoneBookManager manager = new PhoneBookManager();
 
         User user = new User("Avinash","Soni","9314632311", User.AccountType.PERSONAL);
-        User t =  manager.createUser(user);
-        System.out.println(t.getId());
+        manager.createUser(user);
+
+
 
         Contact c1 = new Contact("Abhishek", "Soni","8302999879");
         Contact c2 = new Contact("Ankur", "Soni","9829761019");
@@ -31,6 +32,22 @@ public class Runner {
 
         manager.markNoAsSpam("1234567893");
         manager.markNoAsSpam("1234567894");
+
+        User user2 = new User("Avinashs","Soni","9314632312", User.AccountType.BUSINESS);
+        manager.createUser(user2);
+
+        Contact c11 = new Contact("Abhishesk", "Ssoni","8302999879");
+        Contact c22 = new Contact("Anskur", "Soni","9829761019");
+        Contact c33 = new Contact("Madsan", "Soni","9414048879");
+        Contact c44 = new Contact("Mamsta", "Soni","9414048873");
+        Contact c55 = new Contact("Abhsijeet", "Soni","8302999873");
+        manager.createContact(user2.getId(),c11);
+        manager.createContact(user2.getId(),c22);
+        manager.createContact(user2.getId(),c33);
+        manager.createContact(user2.getId(),c44);
+        manager.createContact(user2.getId(),c55);
+
+
         List<String> searchRes1 = manager.search(user.getId(),"abhi");
         System.out.println(searchRes1);
 
@@ -39,5 +56,14 @@ public class Runner {
 
         List<String> searchRes3 = manager.search(user.getId(),"av");
         System.out.println(searchRes3);
+
+        List<String> searchRes11 = manager.search(user2.getId(),"abhi");
+        System.out.println(searchRes11);
+
+        List<String> searchRes22 = manager.search(user2.getId(),"94");
+        System.out.println(searchRes22);
+
+        List<String> searchRes33 = manager.search(user2.getId(),"av");
+        System.out.println(searchRes33);
     }
 }

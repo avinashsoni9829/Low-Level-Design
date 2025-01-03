@@ -16,37 +16,34 @@ public class Trie {
          TrieNode crawl = root;
          for(char c : word.toLowerCase().toCharArray())
          {
-           crawl.children.putIfAbsent(c,new TrieNode());
-           crawl = crawl.children.get(c);
+             crawl = crawl.children.computeIfAbsent(c, k -> new TrieNode());
          }
          crawl.isEndOfWord = true;
     }
 
     public List<String> search(String word)
     {
-         TrieNode crawl = root;
-         List<String> results  = new ArrayList<>();
-
-         for(char c : word.toLowerCase().toCharArray())
-         {
-              if(!crawl.children.containsKey(c)) return results;
-              crawl = crawl.children.get(c);
-         }
-         collectWords(crawl,new StringBuilder(word),results);
-
-         return results;
+        List<String> results = new ArrayList<>();
+        TrieNode current = root;
+        for (char c : word.toCharArray()) {
+            current = current.children.get(c);
+            if (current == null) {
+                return results;
+            }
+        }
+        collectWords(current, new StringBuilder(word), results);
+        return results;
 
     }
 
-    private void collectWords(TrieNode crawl, StringBuilder stringBuilder, List<String> results) {
-        if(crawl.isEndOfWord){
-             results.add(stringBuilder.toString());
+    private void collectWords(TrieNode node, StringBuilder prefix, List<String> results) {
+        if (node.isEndOfWord) {
+            results.add(prefix.toString());
         }
-
-        for(Map.Entry<Character,TrieNode> e : crawl.children.entrySet())
-        {
-             collectWords(e.getValue(),stringBuilder.append(e.getKey()),results);
-             stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-        }
+        node.children.forEach((key, child) -> {
+            prefix.append(key);
+            collectWords(child, prefix, results);
+            prefix.deleteCharAt(prefix.length() - 1);
+        });
     }
 }
