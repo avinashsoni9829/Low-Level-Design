@@ -1,0 +1,159 @@
+Stage - 1 : Requirements
+
+1. Should be Able to Create User
+2. Should be Able to Create Group
+3. Should be Able to Manage User in Group
+4. Should be Able to Add Expense in Group With Different Settlement Strategy
+
+
+Stage - 2 : Entity
+
+User :
+-id
+-name
+-Map<User,Double>balanceSheet
++ updateBalanceSheet(User user , Double amt)
+----------------------------------------------------
+Expense
+ - User payer
+ - double amount
+ - SplitStrategy spiitStrategy
+ - Map<User,Double> splitDetails [ Breakdown of how much one has to pay ]
+
+ + calculateShares() --> splitStrategy.split(amount,splitDetails)
+-------------------------------------------------------
+SplitStrategy :
+ Map<User,Double> split(double amount , Map<User,Double> details)
+
+ Equal Split , Percentage Split , Ration Split
+---------------------------------------------------------
+Group :
+id
+name
+List<User> members
+List<Expense> transactions
+Map<User,Double> balanceSheet
+
++ addExpense(Expense e)
+----------------------------------------------------------
+UserBalance:
+user
+amount
+
+
+----------------------------------------------------------
+
+SettlementService :
+minimizeTransactions(Map<User,Double>balanceSheet)
+
+
+=====================================================================
+
+Stage - 3  : Function Description
+
+User
+1. updateBalance(User user , Double amt) :
+   put to the map
+
+Expense :
+1. calculateShares(){
+ splitStrategy.split(amount , details)
+}
+SplitStrategy :
+split(amount , Map<User,Double> details)
+
+Equal Split :
+count = details.size()
+share = amount / count
+put User and share in the Map
+
+PercentageSplit :
+e : entrySet() :
+put ( e.key(), (e.value()/100) * amount)
+
+RatioSplit :
+
+=======
+Group :
+1. AddExpense(Expense e)
+Map<User,Double> shares = e.calculateShares()
+User payer = e.getPayer()
+
+txn.add(e)
+
+for(User u : shares.keySet())
+{
+  double sh = shares.get(u);
+
+   if(!u.equals(payer){
+        balancesheet.put(user,balanceSheet.getOrDefault(user,0.0) - share)  // the other user pays
+
+        balanceSheet.put(payer,balanceSheet.getOrDefault(payer,0.0) + share)  // the payers get the money
+
+        user.update(payer , -share)
+        payer.update(user, + share)
+
+
+    }
+   }
+}
+
+
+================================
+SettlementService :
+
+public List<String> minimizeTxn(Map<User,Double> balanceSheet)
+{
+ List<UserBalance> creditor
+ List<UserBalance> debtor
+
+ for(Map.entry e : bs.entrySet()){
+    if(e.getVal() > 0) add to Creditors
+    else add to debtors
+    }
+ List<String> txn = new ArrayList<>();
+ int i = 0 , j = 0 ;
+
+ while( i < creditors.size() && j < debitors.size()){
+   Userbalance cred = credito[i]
+   Userbalance debt = debtors[j]
+
+   double am = Math.min(cred.amoutn , debt.amount)
+   cred-=amt;
+   debt-=amt;
+   debtor -> creditor -> amt
+
+   if(cred.amount == 0) i++
+   if(debt.amount == 0) j++
+
+
+
+
+
+ }
+ }
+}
+
+
+
+Stage - 4 : Enhancements :
+
+Concurrency handling :
+
+
+In the User class while updatingEntry in map we can take a Reentrant Lock
+
+Similar lock during addExpense method of the Group
+
+
+
+====
+Design Patterns
+
+1. Strategy for split
+2. Factory for Expense
+3. Composite pattern
+4. Observer Pattern for notification
+5. settlement service can be used for singleton
+6. command pattern for txn
+
